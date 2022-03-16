@@ -1,26 +1,26 @@
-const Koa = require('koa');
+const Koa = require("koa");
 const app = new Koa();
 
 // x-response-time
 app.use(async (ctx, next) => {
-    const start = Date.now();
-    await next();
-    const ms = Date.now() - start;
-    ctx.set('X-Response-Time', `${ms}ms`);
-    ctx.set('Content-Type', 'text/html;charset=utf-8');
+  const start = Date.now();
+  await next();
+  const ms = Date.now() - start;
+  ctx.set("X-Response-Time", `${ms}ms`);
+  ctx.set("Content-Type", "text/html;charset=utf-8");
 });
 
 // logger
 app.use(async (ctx, next) => {
-    const start = Date.now();
-    await next();
-    const ms = Date.now() - start;
-    console.log(`${ctx.method} ${ctx.url} - ${ms}`);
+  const start = Date.now();
+  await next();
+  const ms = Date.now() - start;
+  console.log(`${ctx.method} ${ctx.url} - ${ms}`);
 });
 
 // response
-app.use(async ctx => {
-    ctx.body = `<html xmlns="http://www.w3.org/1999/xhtml">
+app.use(async (ctx) => {
+  ctx.body = `<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Serverless Devs - Powered By Serverless Devs</title>
@@ -30,7 +30,7 @@ app.use(async ctx => {
 <div class="website">
     <div class="ri-t">
         <h1>Devsapp</h1>
-        <h2>这是一个 Koa 项目</h2>
+        <h2>这是一个 Koa 项目222</h2>
         <span>自豪的通过Serverless Devs进行部署</span>
         <br/>
         <p>您也可以快速体验： <br/>
